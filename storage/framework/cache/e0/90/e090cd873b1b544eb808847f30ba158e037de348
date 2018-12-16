@@ -1,0 +1,31 @@
+1544951619a:1:{s:19:"blog/categories.htm";a:5:{s:8:"fileName";s:19:"blog/categories.htm";s:7:"content";s:552:"{% set categories = blogCategories.categories %}
+{% set currentCategorySlug = blogCategories.currentCategorySlug %}
+
+<div class="list-group">
+    {% for category in categories %}
+        {% set postCount = category.post_count %}
+        <a
+            href="{{ category.url }}"
+            class="list-group-item {{ category.slug == currentCategorySlug ? 'active' }}"
+            >{{ category.name }}
+            {% if postCount %}
+                <span class="badge">{{ postCount }}</span>
+            {% endif %}
+        </a> 
+    {% endfor %}
+</div>";s:5:"mtime";i:1544850991;s:6:"markup";s:552:"{% set categories = blogCategories.categories %}
+{% set currentCategorySlug = blogCategories.currentCategorySlug %}
+
+<div class="list-group">
+    {% for category in categories %}
+        {% set postCount = category.post_count %}
+        <a
+            href="{{ category.url }}"
+            class="list-group-item {{ category.slug == currentCategorySlug ? 'active' }}"
+            >{{ category.name }}
+            {% if postCount %}
+                <span class="badge">{{ postCount }}</span>
+            {% endif %}
+        </a> 
+    {% endfor %}
+</div>";s:4:"code";N;}}

@@ -1,0 +1,160 @@
+1544977579a:1:{s:9:"forum.htm";a:11:{s:8:"fileName";s:9:"forum.htm";s:7:"content";s:3486:"title = "Forum"
+url = "/forum"
+layout = "default"
+description = "The main forum page with all the channels."
+is_hidden = 0
+
+[forumChannels]
+memberPage = 404
+channelPage = "forum/channel"
+topicPage = "forum/topic"
+==
+<div class="rainlab-forum">
+
+    <table class="forum-table">
+        {% for channel in channels %}
+
+            <tr class="root-channel">
+                <th colspan="2">
+                    {{ channel.title }}
+                </th>
+                <th class="counter-column">Topics</th>
+                <th class="counter-column">Posts</th>
+                <th class="activity-column">Recent topic</th>
+            </tr>
+
+            {% if channel.relations.children %}
+
+                {% for channel in channel.children %}
+
+                    <tr class="forum-channel">
+                        <td class="indicator-column">
+                            <div class="topic-indicator {{ channel.hasNew ? 'has-new' }}"></div>
+                        </td>
+                        <td>
+                            <h5>
+                                <a href="{{ channel.url }}">
+                                    {{ channel.title }}
+                                </a>
+                            </h5>
+                            <p>{{ channel.description }}</p>
+
+                            {% if channel.children|length %}
+                                <div class="forum-subchannel">
+                                    <ul>
+                                        <li><span>Subforum</span></li>
+                                        {% for channel in channel.children %}
+                                            <li>
+                                                <a href="{{ channel.url }}" title="{{ channel.description }}">
+                                                    {{ channel.title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </td>
+                        <td class="counter-column">
+                            <p>{{ channel.count_topics }}</p>
+                        </td>
+                        <td class="counter-column">
+                            <p>{{ channel.count_posts }}</p>
+                        </td>
+                        <td class="activity-column">
+                            {% if channel.first_topic %}
+                                <p>
+                                    <a href="{{ channel.first_topic.url }}?page=last#post-{{ channel.first_topic.last_post_id }}">
+                                        {{ channel.first_topic.subject }}
+                                    </a>
+                                    <small>
+                                        {% partial forumChannels ~ "::timestamp" date=channel.first_topic.last_post_at %}
+                                    </small>
+                                </p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            {% else %}
+                <tr>
+                    <td colspan="100"><p>There are no channels to show.</p></td>
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+    </table>
+</div>";s:5:"mtime";i:1544853421;s:6:"markup";s:3259:"<div class="rainlab-forum">
+
+    <table class="forum-table">
+        {% for channel in channels %}
+
+            <tr class="root-channel">
+                <th colspan="2">
+                    {{ channel.title }}
+                </th>
+                <th class="counter-column">Topics</th>
+                <th class="counter-column">Posts</th>
+                <th class="activity-column">Recent topic</th>
+            </tr>
+
+            {% if channel.relations.children %}
+
+                {% for channel in channel.children %}
+
+                    <tr class="forum-channel">
+                        <td class="indicator-column">
+                            <div class="topic-indicator {{ channel.hasNew ? 'has-new' }}"></div>
+                        </td>
+                        <td>
+                            <h5>
+                                <a href="{{ channel.url }}">
+                                    {{ channel.title }}
+                                </a>
+                            </h5>
+                            <p>{{ channel.description }}</p>
+
+                            {% if channel.children|length %}
+                                <div class="forum-subchannel">
+                                    <ul>
+                                        <li><span>Subforum</span></li>
+                                        {% for channel in channel.children %}
+                                            <li>
+                                                <a href="{{ channel.url }}" title="{{ channel.description }}">
+                                                    {{ channel.title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </td>
+                        <td class="counter-column">
+                            <p>{{ channel.count_topics }}</p>
+                        </td>
+                        <td class="counter-column">
+                            <p>{{ channel.count_posts }}</p>
+                        </td>
+                        <td class="activity-column">
+                            {% if channel.first_topic %}
+                                <p>
+                                    <a href="{{ channel.first_topic.url }}?page=last#post-{{ channel.first_topic.last_post_id }}">
+                                        {{ channel.first_topic.subject }}
+                                    </a>
+                                    <small>
+                                        {% partial forumChannels ~ "::timestamp" date=channel.first_topic.last_post_at %}
+                                    </small>
+                                </p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            {% else %}
+                <tr>
+                    <td colspan="100"><p>There are no channels to show.</p></td>
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+    </table>
+</div>";s:4:"code";N;s:5:"title";s:5:"Forum";s:3:"url";s:6:"/forum";s:6:"layout";s:7:"default";s:11:"description";s:42:"The main forum page with all the channels.";s:9:"is_hidden";s:1:"0";s:13:"forumChannels";a:3:{s:10:"memberPage";s:3:"404";s:11:"channelPage";s:13:"forum/channel";s:9:"topicPage";s:11:"forum/topic";}}}
